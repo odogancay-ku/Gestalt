@@ -28,6 +28,8 @@ add_executable(Gestalt Sandbox/main.cpp ${GLFW-CMAKE-STARTER-SRC}
         Gestalt/src/Gestalt/pch.h
         Gestalt/src/Gestalt/Renderer/Renderer.cpp
         Gestalt/src/Gestalt/Renderer/Renderer.h
+        Gestalt/src/Gestalt/WindowManager/WindowManager.cpp
+        Gestalt/src/Gestalt/WindowManager/WindowManager.h
 )
 
 target_link_libraries(Gestalt ${OPENGL_LIBRARIES} glfw)

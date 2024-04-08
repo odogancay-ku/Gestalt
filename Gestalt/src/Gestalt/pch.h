@@ -10,6 +10,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GL/gl.h>
 #include <string>
+#include <functional>
+#include <memory>
 
 
 #endif //GESTALT_PCH_H

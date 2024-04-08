@@ -31,6 +31,8 @@ namespace gestalt::components {
 
     };
 
+    // Graphics
+
     struct Mesh : Component {
         std::vector<float> vertices;
         std::vector<float> normals;
@@ -50,13 +52,14 @@ namespace gestalt::components {
     };
 
     struct Camera : Component {
-        float fov;
-        float aspect;
-        float near;
-        float far;
         glm::vec3 target;
         glm::vec3 up;
         glm::vec3 position;
+
+        glm::mat4 getViewMatrix() const {
+            return glm::lookAt(position, target, up);
+        }
+
     };
 
     struct Light : Component {
@@ -88,6 +91,47 @@ namespace gestalt::components {
             GhostDynamic,
             Dynamic
         } bodyType;
+    };
+
+
+    // Joints
+
+    struct Joint : Component {
+        enum class Type {
+            Fixed,
+            Hinge,
+            Slider,
+            Spring
+        } type;
+    };
+
+    struct FixedJoint : Joint {
+        glm::vec3 anchor;
+    };
+
+    struct HingeJoint : Joint {
+        glm::vec3 anchor;
+        glm::vec3 axis;
+    };
+
+    struct SliderJoint : Joint {
+        glm::vec3 anchor;
+        glm::vec3 axis;
+    };
+
+    struct SpringJoint : Joint {
+        glm::vec3 anchor;
+        glm::vec3 axis;
+        float springConstant;
+        float dampingConstant;
+    };
+
+    // Force fields
+
+    struct Collider;
+
+    struct ForceField : Component {
+        std::function<void(uint)> forceFunction;
     };
 
     // Colliders
@@ -155,6 +199,7 @@ namespace gestalt::components {
         glm::vec3 position;
         glm::vec3 direction;
     };
+
 }
 
 #endif //GESTALT_COMPONENTS_H

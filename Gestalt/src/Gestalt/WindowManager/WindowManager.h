@@ -1,0 +1,12 @@
+#ifndef GESTALT_WINDOWMANAGER_H
+#define GESTALT_WINDOWMANAGER_H
+
+
+class WindowManager {
+
+
+
+};
+
+
+#endif //GESTALT_WINDOWMANAGER_H
